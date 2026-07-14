@@ -1,5 +1,5 @@
 ---
-name: mud-player
+name: play-mud
 description: Play the tbaMUD (CircleMUD-family) game running at localhost:4000 as the character "dummy" -- connect, look around, move, fight, talk, manage inventory, or pursue any goal the user gives you inside the MUD. Use this skill whenever the user asks you to play the MUD, explore the game world, log into the MUD, run a MUD command, or otherwise interact with the multi-user dungeon at localhost:4000, even if they don't spell out every step. Do NOT hand-roll `nc localhost 4000` or raw socket code yourself for this -- always drive the game through this skill's connect.sh/send.sh/status.sh/disconnect.sh scripts, which already handle the login handshake and keep one persistent connection open across turns.
 ---
 
@@ -21,8 +21,8 @@ output arrives in unpredictable bursts so you can't just "sleep 2 and
 hope", and reconnecting for every single command would replay the login
 every time and spam other players with join/leave messages. All of that
 is handled once, deterministically, in `scripts/mud_daemon.py`. Your job
-is to call the four wrapper scripts below and reason about the *game*,
-not the *connection*.
+is to call the four wrapper scripts below and reason about the _game_,
+not the _connection_.
 
 ## The four commands
 
