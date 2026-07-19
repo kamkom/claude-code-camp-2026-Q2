@@ -1,0 +1,14 @@
+{
+  "name": "@boukensha/00-config",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "example": "node examples/example.ts",
+    "test": "node --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "typescript": "^5.9.0"
+  }
+}

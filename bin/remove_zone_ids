@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Remove Windows Zone.Identifier sidecar files (WSL / download metadata)
+# that match the *:Zone.Identifier pattern in .gitignore.
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+
+cd "$PROJECT_DIR"
+
+removed=0
+while IFS= read -r -d '' file; do
+  rm -f -- "$file"
+  echo "removed $file"
+  removed=$((removed + 1))
+done < <(find . -type f -name '*:Zone.Identifier' -print0)
+
+echo "Done. Removed $removed Zone.Identifier file(s)."
